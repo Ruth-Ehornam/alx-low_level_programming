@@ -6,19 +6,19 @@
  *
  * Return: the converted number
  */
-
 unsigned int binary_to_uint(const char *b)
 {
-	if (b == NULL)
-		return (0);
-	unsigned int binary_int = 0;
 	int i;
+	unsigned int binary_int = 0;
+
+	if (!b)
+		return (0);
 
 	for (i = 0; b[i]; i++)
 	{
-	if (b[i] != '0' && b[i] != '1')
-		return (0);
-	binary_int = (binary_int * 2) + (b[i] - '0');
+		if (b[i] < '0' || b[i] > '1')
+			return (0);
+		binary_int = 2 * binary_int + (b[i] - '0');
 	}
 
 	return (binary_int);
