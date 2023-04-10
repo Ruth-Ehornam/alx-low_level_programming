@@ -11,13 +11,12 @@
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
 	unsigned int count = 0;
+	unsigned long int exclusive = n ^ m;
 
-	while (n || m)
+	while (exclusive)
 	{
-	if ((n & 1) != (m & 1))
-		count++;
-		n >>= 1;
-		m >>= 1;
+		count += exclusive & 1;
+		exclusive >>= 1;
 	}
 	return (count);
 }
