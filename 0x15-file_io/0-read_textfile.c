@@ -1,9 +1,9 @@
-#include "main.h"i
+#include "main.h"
 #include <stdlib.h>
 
-/*
- * read_textfile - reads a text file and prints the letters
- * @filename: filename
+/**
+ * read_textfile - Reads a text file and prints it to the STDOUT.
+ * @filename: The name of the file to read.
  * @letters: numbers of letters printed.
  *
  * Return: numbers of letters printed. It fails, returns 0.
