@@ -11,30 +11,28 @@
 int append_text_to_file(const char *filename, char *text_content)
 {
 	int fd, len;
+	size_t bytes_written;
 
-	if (filename == NULL)
-	{
+	if (!filename)
+
 		return (-1);
-	}
 
-	if (text_content == NULL)
-	{
-		return (1);
-	}
+	len = text_content ? strlen(text_content) : 0;
 
-	len = strlen(text_content);
-	fd = open(filename, O_WRONLY | O_APPEND);
+	fd = open(filename, O_WRONLY | O_CREAT | O_APPEND, 0644);
+
 	if (fd == -1)
-	{
-		return (-1);
-	}
 
-	if (write(fd, text_content, len) == -1)
-	{
-	close(fd);
 		return (-1);
-	}
+
+	bytes_written = write(fd, text_content, len);
+
+	if (bytes_written != len)
+
+		return (-1);
 
 	close(fd);
+
 	return (1);
 }
+
